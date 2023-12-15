@@ -1,7 +1,6 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 async function main() {
-    console.log("Loading");
     await handlePolicyLocation();
 
     // Set up constants
@@ -1252,7 +1251,7 @@ async function saveImage(scores) {
     }
     
     const logo = document.createElement('img');
-    logo.src = "./logo.png"
+    logo.src = "https://ticket-tracker-bucket.s3.us-west-1.amazonaws.com/logo.png"
     
     const address = document.createElement('div');
     const addressLine1 = document.createElement('div');
