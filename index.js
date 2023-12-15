@@ -1402,7 +1402,7 @@ async function saveImage(scores) {
         }
 
         currentPage++;
-        document.getElementById('submission-page').removeChild(cloneNode);
+        // document.getElementById('submission-page').removeChild(cloneNode);
     }
 }
 
