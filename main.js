@@ -337,10 +337,11 @@ async function main() {
                     
                     submissionPage.style.display = "flex";
                     
+                    postScore(state, scores);
+
                     getAverageScore(state).then(res => {
                         document.getElementById("average-state-score").innerHTML = `Average policy score (${state}): ${res}`;
                         showAverageScore(res);
-                        postScore(state, scores);
                     })
                     handleUpload({
                         scores, 
