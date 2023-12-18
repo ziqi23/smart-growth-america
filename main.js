@@ -1434,6 +1434,16 @@ async function saveImage(scores) {
     element8.style.display = "block";
     element9.style.display = "block";
     element10.style.display = "block";
+    element1.style.width = "900px";
+    element2.style.width = "900px";
+    element3.style.width = "900px";
+    element4.style.width = "900px";
+    element5.style.width = "900px";
+    element6.style.width = "900px";
+    element7.style.width = "900px";
+    element8.style.width = "900px";
+    element9.style.width = "900px";
+    element10.style.width = "900px";
     element1.firstElementChild.style.marginTop = "24px";
     element2.firstElementChild.style.marginTop = "24px";
     element3.firstElementChild.style.marginTop = "24px";
