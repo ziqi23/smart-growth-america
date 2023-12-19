@@ -1203,11 +1203,15 @@ function showDataVisualization(scores) {
 
     svg2.append("g")
         .call(d3.axisLeft(y).tickSize(0).tickPadding(12).tickValues([0, 2, 4, 6, 8, 10, 12, 14]))
-        .attr("transform", "translate(30, 10)");
+        .attr("transform", "translate(30, 10)")
+        .attr("font-size", "14px")
+        .attr("font-family", "Lago");
 
     svg2.append("g")
         .call(d3.axisBottom(x).tickSize(0).tickPadding(12))
-        .attr("transform", "translate(30, 358)");
+        .attr("transform", "translate(30, 358)")
+        .attr("font-size", "14px")
+        .attr("font-family", "Lago");
 
     svg2.selectAll("mybar")
     .data(data2)
@@ -1345,15 +1349,18 @@ async function saveImage(scores) {
     
     const logo = document.createElement('img');
     logo.src = "./wp-content/uploads/2023/12/logo.png";
-    
+    logo.width = "250px";
+
     const address = document.createElement('div');
     const addressLine1 = document.createElement('div');
     const addressLine2 = document.createElement('div');
     const addressLine3 = document.createElement('div');
-    addressLine1.innerHTML = "1152 15TH ST NW SUITE 450"
-    addressLine2.innerHTML = "WASHINGTON, DC 20005"
-    addressLine3.innerHTML = "(202) 207-3355"
-    
+    addressLine1.innerHTML = "1152 15TH ST NW SUITE 450";
+    addressLine2.innerHTML = "WASHINGTON, DC 20005";
+    addressLine3.innerHTML = "(202) 207-3355";
+    addressLine1.style.color = "#282828";
+    addressLine2.style.color = "#282828";
+    addressLine3.style.color = "#595959";
     address.appendChild(addressLine1);
     address.appendChild(addressLine2);
     address.appendChild(addressLine3);
@@ -1444,6 +1451,16 @@ async function saveImage(scores) {
     element8.style.width = "900px";
     element9.style.width = "900px";
     element10.style.width = "900px";
+    element1.style.marginLeft = "72px";
+    element2.style.marginLeft = "72px";
+    element3.style.marginLeft = "72px";
+    element4.style.marginLeft = "72px";
+    element5.style.marginLeft = "72px";
+    element6.style.marginLeft = "72px";
+    element7.style.marginLeft = "72px";
+    element8.style.marginLeft = "72px";
+    element9.style.marginLeft = "72px";
+    element10.style.marginLeft = "72px";
     element1.firstElementChild.style.marginTop = "24px";
     element2.firstElementChild.style.marginTop = "24px";
     element3.firstElementChild.style.marginTop = "24px";
@@ -1491,7 +1508,9 @@ async function saveImage(scores) {
     const p2 = document.createElement('div');
     p.style.fontSize = "16px";
     p.style.fontWeight = "bold";
+    p.style.color = "#282828";
     p2.style.fontSize = "12px";
+    p2.style.color = "#595959";
     p.innerHTML = "About Smart Growth America";
     p2.innerHTML = "Smart Growth America empowers communities through technical assistance, advocacy and thought leadership to create livable places, healthy people, and shared prosperity. We work with elected officials at all levels, real estate developers, chambers of commerce, transportation and urban planning professionals, and residents to improve everyday life for people across the country through better development.";
     const aboutParagraph = document.createElement('div');
@@ -1506,7 +1525,9 @@ async function saveImage(scores) {
     p3.innerHTML = "About National Complete Streets Coalition";
     p3.style.fontSize = "16px";
     p3.style.fontWeight = "bold";
+    p3.style.color = "#282828";
     p4.style.fontSize = "12px";
+    p4.style.color = "#595959";
     p4.innerHTML = "The National Complete Streets Coalition, a program of Smart Growth America, is a non-profit, non-partisan alliance of public interest organizations and transportation professionals committed to the development and implementation of Complete Streets policies and practices. A nationwide movement launched by the Coalition in 2004, Complete Streets is the integration of people and place in the planning, design, construction, operation, and maintenance of transportation networks";
     const aboutParagraph2 = document.createElement('div');
     aboutParagraph2.style.display = "flex";
@@ -1521,10 +1542,30 @@ async function saveImage(scores) {
     aboutSection.style.display = "flex";
     aboutSection.style.width = "calc(100% - 144px)";
     aboutSection.style.justifyContent = "space-between";
-    aboutSection.style.color = "#282828";
     aboutSection.style.paddingBottom = "12px";
     aboutSection.style.borderBottom = "1px solid black";
     aboutSection.style.margin = "0px 72px";
+
+    const evaluationHeader = document.createElement('div');
+    evaluationHeader.innerHTML = "Evaluation Summary";
+    evaluationHeader.style.display = "flex";
+    evaluationHeader.style.alignItems = "center";
+    evaluationHeader.style.width = "calc(100% - 144px)";
+    evaluationHeader.style.height = "27px";
+    evaluationHeader.style.margin = "24px 72px";
+    evaluationHeader.style.paddingLeft = "12px";
+    evaluationHeader.style.backgroundColor = "#E8F7FF";
+    evaluationHeader.style.color = "#0082C8";
+    evaluationHeader.style.fontSize = "16pt";
+    evaluationHeader.style.fontWeight = "bold";
+
+    const yourScore = document.createElement('div');
+    yourScore.innerHTML = "Your Score";
+    yourScore.style.width = "calc(100% - 144px)";
+    yourScore.style.margin = "0px 72px";
+    yourScore.style.color = "#0082C8";
+    yourScore.style.fontSize = "14pt";
+    yourScore.style.fontWeight = "bold";
 
     const score = document.getElementById("score-comparison").cloneNode(true);
     score.style.scale = "0.8";
@@ -1533,7 +1574,11 @@ async function saveImage(scores) {
     svg.style.width = "calc(100% - 144px)";
     svg.style.margin = "0px 72px";
     svg.lastElementChild.style.transform = "translateX(-60px)";
-    svg.firstElementChild.innerHTML = "Evaluation Summary";
+    svg.firstElementChild.style.backgroundColor = "inherit";
+    svg.firstElementChild.style.fontSize = "14pt";
+    svg.firstElementChild.style.color = "#0082C8";
+    svg.firstElementChild.style.marginBottom = "24px";
+    svg.firstElementChild.style.padding = "0px 0px";
     svg.lastElementChild.style.scale = "0.9";
 
     const disclaimer = document.getElementById("disclaimer").cloneNode(true);
@@ -1547,6 +1592,8 @@ async function saveImage(scores) {
     const summaryPage = document.createElement('div');
     summaryPage.appendChild(summaryHeader);
     summaryPage.appendChild(aboutSection);
+    summaryPage.appendChild(evaluationHeader);
+    summaryPage.appendChild(yourScore);
     summaryPage.appendChild(score);
     summaryPage.appendChild(svg);
     summaryPage.appendChild(disclaimer);
@@ -1564,7 +1611,7 @@ async function saveImage(scores) {
     const imgData = canvas.toDataURL("image/jpeg", 1.0)
     doc.addImage(imgData, 'PNG', 0, 0);
     doc.addPage();
-    document.getElementById('submission-page').removeChild(summaryPage);
+    // document.getElementById('submission-page').removeChild(summaryPage);
 
     // Add element pages
     for (let page of pages) {
@@ -1574,8 +1621,8 @@ async function saveImage(scores) {
         const newElement = page.cloneNode(true)
         cloneNode.replaceChild(newElement, cloneElement);
         
-        const score = ` (${scoreByElement[cloneElement.id] || 0} / ${maxScoreByElement[cloneElement.id]})`;
-        cloneElementName.innerHTML = mapping[newElement.id] + score;
+        const score = ` (${scoreByElement[page.id] || 0} / ${maxScoreByElement[page.id]})`;
+        cloneNode.children[1].innerHTML = mapping[newElement.id] + score;
         cloneFooter.lastElementChild.innerHTML = currentPage + 1;
 
         document.getElementById('submission-page').appendChild(cloneNode);
