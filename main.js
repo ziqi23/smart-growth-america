@@ -1350,7 +1350,8 @@ async function saveImage(scores) {
     
     const logo = document.createElement('img');
     logo.src = "./wp-content/uploads/2023/12/logo.png";
-
+    logo.style.marginLeft = "24px";
+    
     const address = document.createElement('div');
     const addressLine1 = document.createElement('div');
     const addressLine2 = document.createElement('div');
@@ -1364,7 +1365,7 @@ async function saveImage(scores) {
     address.appendChild(addressLine1);
     address.appendChild(addressLine2);
     address.appendChild(addressLine3);
-    address.style.marginRight = "48px";
+    address.style.marginRight = "24px";
     address.style.textAlign = "end";
 
     // Create div to hold logo and address
