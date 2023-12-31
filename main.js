@@ -1528,7 +1528,7 @@ async function saveImage(scores) {
     p3.style.color = "#282828";
     p4.style.fontSize = "14px";
     p4.style.color = "#595959";
-    p4.innerHTML = "The National Complete Streets Coalition, a program of Smart Growth America, is a non-profit, non-partisan alliance of public interest organizations and transportation professionals committed to the development and implementation of Complete Streets policies and practices. A nationwide movement launched by the Coalition in 2004, Complete Streets is the integration of people and place in the planning, design, construction, operation, and maintenance of transportation networks";
+    p4.innerHTML = "The National Complete Streets Coalition, a program of Smart Growth America, is a non-profit, non-partisan alliance of public interest organizations and transportation professionals committed to the development and implementation of Complete Streets policies and practices. A nationwide movement launched by the Coalition in 2004, Complete Streets is the integration of people and place in the planning, design, construction, operation, and maintenance of transportation networks.";
     const aboutParagraph2 = document.createElement('div');
     aboutParagraph2.style.display = "flex";
     aboutParagraph2.style.flexDirection = "column";
