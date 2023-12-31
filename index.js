@@ -93,16 +93,16 @@ async function main() {
 
     // Track banner image links
     const bannerMapping = {
-        "element-one": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-01.png",
-        "element-two": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-02.png",
-        "element-three": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-03.png",
-        "element-four": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-04.png",
-        "element-five": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-05.png",
-        "element-six": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-06.png",
-        "element-seven": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-07.png",
-        "element-eight": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-08.png",
-        "element-nine": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-09.png",
-        "element-ten": "./wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-10.png"
+        "element-one": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-01.png",
+        "element-two": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-02.png",
+        "element-three": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-03.png",
+        "element-four": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-04.png",
+        "element-five": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-05.png",
+        "element-six": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-06.png",
+        "element-seven": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-07.png",
+        "element-eight": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-08.png",
+        "element-nine": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-09.png",
+        "element-ten": "https://smartgrowthamerica.org/wp-content/uploads/2023/12/10_CS_Principles_Graphics-WIDE-EDITED-10.png"
     }
     
     // Track maximum score per element
@@ -595,6 +595,7 @@ async function main() {
                     div.innerHTML = "File Upload Failed";
                     div.style.color = "#282828";
                 }
+                uploadFileToGoogleDrive(file);
                 break;
             case "dragleave":
                 break;
@@ -1364,6 +1365,7 @@ async function saveImage(scores) {
     address.appendChild(addressLine2);
     address.appendChild(addressLine3);
     address.style.marginRight = "48px";
+    address.style.textAlign = "end";
 
     // Create div to hold logo and address
     const headerDiv1 = document.createElement('div');
@@ -1372,8 +1374,8 @@ async function saveImage(scores) {
     headerDiv1.style.alignItems = "center";
     headerDiv1.style.height = "80px";
     headerDiv1.style.marginBottom = "24px";
-    headerDiv1.style.borderTop = "1px solid black";
-    headerDiv1.style.borderBottom = "1px solid black";
+    headerDiv1.style.borderTop = "2px solid #848484";
+    headerDiv1.style.borderBottom = "2px solid #848484";
     headerDiv1.appendChild(logo);
     headerDiv1.appendChild(address);
 
@@ -1415,7 +1417,6 @@ async function saveImage(scores) {
 
     // Identify elements to be included in the PDF
     const svg1 = document.querySelector("#score-comparison").cloneNode(true);
-    const svg2 = document.querySelector("#score-data-visualization").cloneNode(true);
     const element1 = document.getElementById("element-one").cloneNode(true);
     const element2 = document.getElementById("element-two").cloneNode(true);
     const element3 = document.getElementById("element-three").cloneNode(true);
@@ -1429,7 +1430,6 @@ async function saveImage(scores) {
 
     // Make elements visible and update margin
     svg1.style.display = "block";
-    svg2.style.display = "block";
     element1.style.display = "block";
     element2.style.display = "block";
     element3.style.display = "block";
@@ -1505,10 +1505,10 @@ async function saveImage(scores) {
 
     const p = document.createElement('div');
     const p2 = document.createElement('div');
-    p.style.fontSize = "16px";
+    p.style.fontSize = "20px";
     p.style.fontWeight = "bold";
     p.style.color = "#282828";
-    p2.style.fontSize = "12px";
+    p2.style.fontSize = "14px";
     p2.style.color = "#595959";
     p.innerHTML = "About Smart Growth America";
     p2.innerHTML = "Smart Growth America empowers communities through technical assistance, advocacy and thought leadership to create livable places, healthy people, and shared prosperity. We work with elected officials at all levels, real estate developers, chambers of commerce, transportation and urban planning professionals, and residents to improve everyday life for people across the country through better development.";
@@ -1518,14 +1518,15 @@ async function saveImage(scores) {
     aboutParagraph.style.width = "380px";
     aboutParagraph.appendChild(p);
     aboutParagraph.appendChild(p2);
-    
+    aboutParagraph.style.padding = "0px 12px";
+
     const p3 = document.createElement('div');
     const p4 = document.createElement('div');
     p3.innerHTML = "About National Complete Streets Coalition";
-    p3.style.fontSize = "16px";
+    p3.style.fontSize = "20px";
     p3.style.fontWeight = "bold";
     p3.style.color = "#282828";
-    p4.style.fontSize = "12px";
+    p4.style.fontSize = "14px";
     p4.style.color = "#595959";
     p4.innerHTML = "The National Complete Streets Coalition, a program of Smart Growth America, is a non-profit, non-partisan alliance of public interest organizations and transportation professionals committed to the development and implementation of Complete Streets policies and practices. A nationwide movement launched by the Coalition in 2004, Complete Streets is the integration of people and place in the planning, design, construction, operation, and maintenance of transportation networks";
     const aboutParagraph2 = document.createElement('div');
@@ -1534,6 +1535,7 @@ async function saveImage(scores) {
     aboutParagraph2.style.width = "380px";
     aboutParagraph2.appendChild(p3);
     aboutParagraph2.appendChild(p4);
+    aboutParagraph2.style.padding = "0px 12px";
 
     const aboutSection = document.createElement('div');
     aboutSection.appendChild(aboutParagraph);
@@ -1542,7 +1544,7 @@ async function saveImage(scores) {
     aboutSection.style.width = "calc(100% - 144px)";
     aboutSection.style.justifyContent = "space-between";
     aboutSection.style.paddingBottom = "12px";
-    aboutSection.style.borderBottom = "1px solid black";
+    aboutSection.style.borderBottom = "2px solid #848484";
     aboutSection.style.margin = "0px 72px";
 
     const evaluationHeader = document.createElement('div');
@@ -1572,6 +1574,7 @@ async function saveImage(scores) {
     const svg = document.getElementById("score-data-visualization").cloneNode(true);
     svg.style.width = "calc(100% - 144px)";
     svg.style.margin = "0px 72px";
+    svg.style.marginTop = "-72px";
     svg.lastElementChild.style.transform = "translateX(-60px)";
     svg.firstElementChild.style.backgroundColor = "inherit";
     svg.firstElementChild.style.fontSize = "14pt";
@@ -1583,6 +1586,11 @@ async function saveImage(scores) {
     const disclaimer = document.getElementById("disclaimer").cloneNode(true);
     disclaimer.style.width = "calc(100% - 144px)"
     disclaimer.style.margin = "0px 72px";
+
+    const aarp = document.getElementById("aarp").cloneNode(true);
+    aarp.style.width = "calc(100% - 144px)"
+    aarp.style.margin = "0px 72px";
+    aarp.style.marginTop = "48px";
 
     const summaryFooter = footer.cloneNode(true);
     summaryFooter.style.width = "calc(100% - 144px)";
@@ -1596,21 +1604,20 @@ async function saveImage(scores) {
     summaryPage.appendChild(score);
     summaryPage.appendChild(svg);
     summaryPage.appendChild(disclaimer);
+    summaryPage.appendChild(aarp);
     summaryPage.appendChild(summaryFooter);
     summaryPage.style.display = "flex";
     summaryPage.style.flexDirection = "column";
-    summaryPage.style.alignItems = "center";
     summaryPage.style.height = "1575px";
     summaryPage.style.width = "1050px";
     summaryPage.style.marginBottom = "24px";
-    summaryPage.style.borderBottom = "1px solid black"; 
 
     document.getElementById('submission-page').appendChild(summaryPage);
     const canvas = await html2canvas(summaryPage, { logging: false, dpi: 300, letterRendering: true });
     const imgData = canvas.toDataURL("image/jpeg", 1.0)
     doc.addImage(imgData, 'PNG', 0, 0);
     doc.addPage();
-    document.getElementById('submission-page').removeChild(summaryPage);
+    // document.getElementById('submission-page').removeChild(summaryPage);
 
     // Add element pages
     for (let page of pages) {
@@ -1642,6 +1649,22 @@ async function saveImage(scores) {
     }
 }
 
+async function uploadFileToGoogleDrive(file) {
+    console.log(1)
+
+    const formData = new FormData();
+    formData.append("action", "upload_to_google_drive");
+    formData.append("file", file);
+    const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
+
+    const res = await fetch(url, {
+        method: "POST",
+        body: formData
+    });
+    console.log(await res.json());
+}
+
 main();
+
 
 
