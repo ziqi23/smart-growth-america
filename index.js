@@ -1649,21 +1649,6 @@ async function saveImage(scores) {
     }
 }
 
-async function uploadFileToGoogleDrive(file) {
-    console.log(1)
-
-    const formData = new FormData();
-    formData.append("action", "upload_to_google_drive");
-    formData.append("file", file);
-    const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
-
-    const res = await fetch(url, {
-        method: "POST",
-        body: formData
-    });
-    console.log(await res.json());
-}
-
 main();
 
 
