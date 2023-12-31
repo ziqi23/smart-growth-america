@@ -1515,7 +1515,7 @@ async function saveImage(scores) {
     const aboutParagraph = document.createElement('div');
     aboutParagraph.style.display = "flex";
     aboutParagraph.style.flexDirection = "column";
-    aboutParagraph.style.width = "380px";
+    aboutParagraph.style.width = "450px";
     aboutParagraph.appendChild(p);
     aboutParagraph.appendChild(p2);
     aboutParagraph.style.padding = "0px 12px";
@@ -1532,7 +1532,7 @@ async function saveImage(scores) {
     const aboutParagraph2 = document.createElement('div');
     aboutParagraph2.style.display = "flex";
     aboutParagraph2.style.flexDirection = "column";
-    aboutParagraph2.style.width = "380px";
+    aboutParagraph2.style.width = "450px";
     aboutParagraph2.appendChild(p3);
     aboutParagraph2.appendChild(p4);
     aboutParagraph2.style.padding = "0px 12px";
