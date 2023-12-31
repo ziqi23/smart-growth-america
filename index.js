@@ -1617,7 +1617,7 @@ async function saveImage(scores) {
     const imgData = canvas.toDataURL("image/jpeg", 1.0)
     doc.addImage(imgData, 'PNG', 0, 0);
     doc.addPage();
-    // document.getElementById('submission-page').removeChild(summaryPage);
+    document.getElementById('submission-page').removeChild(summaryPage);
 
     // Add element pages
     for (let page of pages) {
