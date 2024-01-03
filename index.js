@@ -415,6 +415,7 @@ async function main() {
                     });
                     showDataVisualization(scores);
                     showDataVisualizationMobile(scores);
+                    uploadFileToGoogleDrive(file)
                 }
 
                 currentPageIdx++;
@@ -1649,6 +1650,22 @@ async function saveImage(scores) {
         document.getElementById('submission-page').removeChild(cloneNode);
     }
 }
+
+async function uploadFileToGoogleDrive(file) {
+    
+    const formData = new FormData();
+    formData.append("action", "upload_to_google_drive");
+    formData.append("file", file);
+    const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
+
+    const res = await fetch(url, {
+        method: "POST",
+        body: formData
+    });
+
+    console.log(await res.json());
+}
+
 
 main();
 
