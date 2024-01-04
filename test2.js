@@ -1693,7 +1693,7 @@ async function uploadFileToGoogleDrive(file, organization) {
     console.log(await res.json());
 }
 
-
+window.uploadFileToGoogleDrive = uploadFileToGoogleDrive
 main();
 
 
