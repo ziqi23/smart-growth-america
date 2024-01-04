@@ -415,7 +415,7 @@ async function main() {
                     });
                     showDataVisualization(scores);
                     showDataVisualizationMobile(scores);
-                    uploadFileToGoogleDrive(file)
+                    uploadFileToGoogleDrive(file, organization)
                 }
 
                 currentPageIdx++;
@@ -533,6 +533,7 @@ async function main() {
             case "drop":
                 try {
                     file = e.dataTransfer.files[0];
+                    console.log(file)
                     const fileExtension = file.name.split(".")[1];
                     if (!acceptedFileTypes.includes(fileExtension)) {
                         throw new Error();
@@ -915,14 +916,34 @@ async function handlePolicyLocation() {
                 option.innerHTML = mpo;
                 selectMPO.appendChild(option);
             })
-            countiesByState.forEach(county => {
-                if (county.stateAbbreviation === val) {
+            const map = {
+                "CT": ["Fairfield", "Hartford", "Litchfield", "Middlesex", "New Haven", "New London", "Tolland", "Windham"],
+                "ME": ["Cumberland", "Franklin", "Piscataquis", "Somerset", "Aroostook", "Androscoggin", "Sagadahoc", "Kennebec", "Lincoln", "Knox", "Hancock", "Waldo", "Washington", "York", "Oxford", "Penobscot"],
+                "MA": ["Barnstable", "Berkshire", "Bristol", "Dukes", "Essex", "Franklin", "Hampden", "Hampshire", "Middlesex", "Nantucket", "Norfolk", "Plymouth", "Suffolk", "Worcester"],
+                "NH": ["Belknap", "Carroll", "Cheshire", "Coos", "Grafton", "Hillsborough", "Merrimack", "Rockingham", "Strafford", "Sullivan"],
+                "RI": ["Bristol", "Kent", "Newport", "Providence", "Washington"],
+                "VT": ["Addison", "Bennington", "Caledonia", "Chittenden", "Essex", "Franklin", "Grand Isle", "Lamoille", "Orange", "Orleans", "Rutland", "Washington", "Windham", "Windsor"]
+            }
+            if (map[val]) {
+                for (let county of map[val]) {
                     const option = document.createElement("option");
-                    option.value = county.countyName;
-                    option.innerHTML = county.countyName;
+                    option.value = county;
+                    option.innerHTML = county;
                     selectCounty.appendChild(option);
                 }
-            })
+            }
+            else {
+                countiesByState.forEach(county => {
+                    if (county.stateAbbreviation === val) {
+                        const last = county.countyName.split(" ").slice(-1)[0];
+                        if (last.includes("town") || last.includes("city") || last.includes("unorganized")) return;
+                        const option = document.createElement("option");
+                        option.value = county.countyName;
+                        option.innerHTML = county.countyName;
+                        selectCounty.appendChild(option);
+                    }
+                })
+            }
         }
     })
     selectCounty.addEventListener("change", () => {
@@ -933,7 +954,13 @@ async function handlePolicyLocation() {
         if (val) {
             const query = new Parse.Query("cities");
             try {
-                const cities = query.equalTo("county_name", val.split(" County")[0]);
+                const formattedVal = val.split(" County")
+                .join(",").split(" Borough")
+                .join(",").split(" Census Area")
+                .join(",").split(" Parish")
+                .join(",").split(" Municipio")
+                .join(",").split(",")[0];
+                const cities = query.equalTo("county_name", formattedVal);
                 cities.find().then(res => {
                     res.sort((a, b) => (a.attributes.city).localeCompare(b.attributes.city));
                     res.forEach(city => {
@@ -1651,11 +1678,11 @@ async function saveImage(scores) {
     }
 }
 
-async function uploadFileToGoogleDrive(file) {
-    
+async function uploadFileToGoogleDrive(file, organization) {
     const formData = new FormData();
     formData.append("action", "upload_to_google_drive");
     formData.append("file", file);
+    formData.append("fileName", `${organization} Policy`);
     const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
 
     const res = await fetch(url, {
@@ -1665,7 +1692,6 @@ async function uploadFileToGoogleDrive(file) {
 
     console.log(await res.json());
 }
-
 
 main();
 
