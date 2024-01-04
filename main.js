@@ -415,7 +415,7 @@ async function main() {
                     });
                     showDataVisualization(scores);
                     showDataVisualizationMobile(scores);
-                    uploadFileToGoogleDrive(file)
+                    uploadFileToGoogleDrive(file, organization)
                 }
 
                 currentPageIdx++;
@@ -1678,10 +1678,11 @@ async function saveImage(scores) {
     }
 }
 
-async function uploadFileToGoogleDrive(file) {
+async function uploadFileToGoogleDrive(file, organization) {
     const formData = new FormData();
     formData.append("action", "upload_to_google_drive");
     formData.append("file", file);
+    formData.append("fileName", `${organization} Policy`);
     const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
 
     const res = await fetch(url, {
