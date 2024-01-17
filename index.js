@@ -1522,7 +1522,7 @@ async function saveImage(scores) {
     
     // Define jsPDF
     const jspdf = window.jsPDF;
-    const doc = new jspdf('p', 'px', [600, 900]);
+    const doc = new jspdf('p', 'pt', [1575 / 4 * 3, 1050 / 4 * 3]);
     const pages = [element1, element2, element3, element4, element5, element6, element7, element8, element9, element10];
     let currentPage = 1;
 
