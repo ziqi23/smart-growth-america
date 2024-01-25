@@ -1708,6 +1708,7 @@ async function uploadFileToGoogleDrive(file) {
     const formData = new FormData();
     formData.append("action", "upload_to_google_drive");
     formData.append("file", file);
+    formData.append("fileName", file.name);
     const url = "/wp-admin/admin-ajax.php?action=upload_to_google_drive";
 
     const res = await fetch(url, {
