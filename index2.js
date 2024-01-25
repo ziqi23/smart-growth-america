@@ -1403,7 +1403,7 @@ async function saveImage(scores) {
     }
     
     const logo = document.createElement('img');
-    logo.src = "./wp-content/uploads/2023/12/logo.png";
+    logo.src = "https://smartgrowthamerica.org/wp-content/uploads/2023/12/logo.png";
     logo.style.marginLeft = "24px";
     
     const address = document.createElement('div');
